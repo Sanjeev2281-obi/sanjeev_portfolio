@@ -2,6 +2,7 @@
   margin: 0;
   padding: 0;
   font-family: "Poppins", sans-serif;
+
 }
 
 header {
@@ -902,51 +903,62 @@ body {
     overflow-x: hidden;
   }
 }
-/* === LOGO LOOP === */
-/* === LOGO LOOP SECTION === */
+/*logo*/
 .logo-section {
-  background-color: #ffffff;
-  padding: 50px 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
+  width: 100%;
+  overflow: hidden;
+  background: transparent; /* keeps your site color theme */
+  padding: 10px 0; /* smaller top and bottom space */
 }
 
 .logo-container {
-  width: 90%;
+  width: 100%;
   overflow: hidden;
-  mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
-  -webkit-mask-image: linear-gradient(to right, transparent, black 10%, black 90%, transparent);
+  position: relative;
 }
 
 .logo-track {
   display: flex;
   align-items: center;
-  gap: 60px;
-  animation: scrollLeft 14s linear infinite;
+  gap: 50px; /* spacing between logos */
+  animation: scroll 20s linear infinite;
+  width: max-content;
 }
 
 .logo {
-  width: 80px;
-  height: 80px;
-  transition: transform 0.3s ease;
+  width: 45px; /* smaller logo size */
+  height: 45px;
+  object-fit: contain;
+  transition: transform 0.3s ease, filter 0.3s ease;
 }
 
 .logo:hover {
-  transform: scale(1.2);
+  transform: scale(1.15);
+  filter: drop-shadow(0 0 4px rgba(0, 0, 0, 0.2)); /* subtle hover glow */
 }
 
-/* Keyframe for continuous scrolling */
-@keyframes scrollLeft {
-  0% {
+/* Smooth scrolling animation */
+@keyframes scroll {
+  from {
     transform: translateX(0);
   }
-  100% {
+  to {
     transform: translateX(-50%);
   }
 }
 
-/* Pause animation when hovered */
-.logo-container:hover .logo-track {
-  animation-play-state: paused;
+/* Hide x-axis overflow */
+html, body {
+  overflow-x: hidden;
 }
+.im1{
+    width: 400px;
+    height: 70vh;
+}
+.btn-home2 a{
+    text-decoration: none;
+    color: black;
+ }
+ .btn-home2 a:hover{
+    color:whitesmoke;
+ }

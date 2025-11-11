@@ -80,7 +80,7 @@
 
                     <h3></h3>
                     <div class="info-p">
-                        <p>I create beautiful, functional, and user-centered digital experiences.</p>
+
                         <p>I am a full-stack developer passionate about building interactive and responsive web
                             applications. I enjoy solving problems and turning creative ideas into real projects.</p>
                     </div>
@@ -93,7 +93,10 @@
                             </a>
 
                             <button class="btn-home2">
-                                <i class="fa-solid fa-download"></i> Download CV
+                                <a href="images/__sanjeev res.pdf" 
+                                    download>
+                                    <i class="fa-solid fa-download"></i> Download CV
+                                </a>
                             </button>
                         </div>
 
@@ -114,7 +117,7 @@
                     </div>
                 </div>
             </div>
-
+            <img class="im1" src="images/img2.jpg" alt="">
         </div>
     </section>
 
@@ -160,7 +163,7 @@
                     </div>
                 </div>
             </div>
-            <img class="img2" src="banner.jpeg" alt="">
+            <img src="images/img.jpg" alt="">
         </div>
     </section>
     <!-- === LOGO LOOP SECTION === -->
@@ -274,36 +277,7 @@
                     <a href="#" class="btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
                 </div>
             </div>
-
-            <div class="project-card">
-                <img src="images/Game Dashboard Design.jpg" alt="Game Landing Page">
-                <h3>Game Landing Page</h3>
-                <p>Landing page for a game with animations and parallax effects.</p>
-                <div class="skills">
-                    <a href="#">HTML</a>
-                    <a href="#">CSS</a>
-                    <a href="#">GSAP</a>
-                </div>
-                <div class="btns">
-                    <a href="#" class="btn"><i class="fab fa-github"></i> GitHub</a>
-                    <a href="#" class="btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <img src="images/Task manager app.jpg" alt="Task Manager">
-                <h3>Task Manager</h3>
-                <p>Task tracking web app with CRUD features and clean UI.</p>
-                <div class="skills">
-                    <a href="#">HTML</a>
-                    <a href="#">CSS</a>
-                    <a href="#">JS</a>
-                </div>
-                <div class="btns">
-                    <a href="#" class="btn"><i class="fab fa-github"></i> GitHub</a>
-                    <a href="#" class="btn"><i class="fas fa-external-link-alt"></i> Live Demo</a>
-                </div>
-            </div>
+            
         </div>
     </section>
     <section class="services" id="services">
@@ -315,30 +289,25 @@
             <div class="service-card">
                 <img src="images/web.svg" alt="Web Development">
                 <h3>Web Development</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut eligendi soluta est veniam sequi nemo.
+                <p>Building responsive, interactive, and modern websites using React, TailwindCSS, and other cutting-edge technologies.
                 </p>
             </div>
 
             <div class="service-card">
-                <img src="images/app.svg" alt="App Development">
+                <img src="images/app.svg" alt="Web Application Development">
                 <h3>App Development</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut eligendi soluta est veniam sequi nemo.
+                <p>Creating robust web applications with dynamic features, user authentication, and seamless user experience.
                 </p>
             </div>
 
             <div class="service-card">
                 <img src="images/dm.svg" alt="Digital Marketing">
                 <h3>Digital Marketing</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut eligendi soluta est veniam sequi nemo.
+                <p>Creating strategies for SEO, social media, and paid campaigns to help businesses grow online.
                 </p>
             </div>
 
-            <div class="service-card">
-                <img src="images/seo.svg" alt="Email Marketing">
-                <h3>Email Marketing</h3>
-                <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. Ut eligendi soluta est veniam sequi nemo.
-                </p>
-            </div>
+
 
         </div>
     </section>
@@ -377,7 +346,8 @@
             </div>
 
             <div class="contact-form slide-in-right">
-                <form id="contact-form">
+                <form id="contact-form" action="https://api.web3forms.com/submit" method="POST">
+                    <input type="hidden" name="access_key" value="62344ffd-9792-4610-81e6-6e7ab1ef329d">
                     <div class="form-group">
                         <input type="text" placeholder="Your Name" required name="user_name">
                     </div>

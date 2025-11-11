@@ -96,7 +96,7 @@ cards.forEach(card => {
 
 // === TYPING ANIMATION ===
 const typingElement = document.querySelector('.info-home h3');
-const words = ["Full-Stack Developer", "Web Enthusiast", "React Developer"];
+const words = ["FullStack Developer", "Web Enthusiast", "React Developer"];
 let wordIndex = 0;
 let charIndex = 0;
 let isDeleting = false;
