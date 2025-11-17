@@ -151,10 +151,6 @@ header {
   transition: 0.4s;
 }
 
-.btn-home2:hover{
-    background-color: #000000;
-    color: #fff;
-}
 
 hr {
   width: 90%;
@@ -955,10 +951,12 @@ html, body {
     width: 400px;
     height: 70vh;
 }
+
+.btn-home2 {
+    background-color: white;
+    color:black; 
+}
 .btn-home2 a{
     text-decoration: none;
-    color: black;
- }
- .btn-home2 a:hover{
-    color:whitesmoke;
- }
+    color:black;
+}
