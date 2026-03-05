@@ -336,9 +336,38 @@ hr {
   justify-content: center;
   gap: 10px;
 }
+/* Home Buttons - works for all screens */
+.btnn{
+  display: flex;
+  gap: 15px;
+  margin-top: 20px;
+}
 
+.btn-home1,
+.btn-home2{
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 10px 20px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 8px;
+  text-decoration: none;
+  border: 2px solid black;
+  color: black;
+  transition: all 0.3s ease;
+}
+
+/* hover effect */
+.btn-home1:hover,
+.btn-home2:hover{
+  background: black;
+  color: white;
+}
+
+/* small buttons */
 .btn {
-  background: #1e40af;
+  background: black;
   color: white;
   text-decoration: none;
   padding: 8px 14px;
@@ -351,11 +380,8 @@ hr {
 }
 
 .btn:hover {
-  background: #2563eb;
-  border-radius: 25px;
-
+  background: #333;
 }
-
 .services{
     margin: 160px 200px;
     display: flex;
@@ -774,51 +800,17 @@ body {
     max-width: 100%;
     height: auto;
   }
-.btnn{
+
+.hhr{
+  margin-top: 20px;
+}
+
+.follow ul {
   display: flex;
   gap: 15px;
-  flex-wrap: wrap;
-  align-items: center;
+  list-style: none;
+  padding: 0;
 }
-
-/* Contact button */
-.btn-home1{
-  background-color: black;
-  color: white;
-  border-radius: 8px;
-  padding: 10px 18px;
-  text-decoration: none;
-  font-size: 14px;
-  transition: 0.3s;
-}
-
-/* Resume button */
-.btn-home2{
-  border: 2px solid black;
-  color: black;
-  border-radius: 8px;
-  padding: 10px 18px;
-  text-decoration: none;
-  font-size: 14px;
-  transition: 0.3s;
-}
-
-/* Hover effects */
-.btn-home1:hover{
-  background-color: #333;
-}
-
-.btn-home2:hover{
-  background-color: black;
-  color: white;
-}
-  
-  .follow ul {
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 10px;
-  }
-
   .footer-links {
     flex-direction: column;
     gap: 15px;

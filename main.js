@@ -3,22 +3,31 @@ const navLinks = document.querySelectorAll('.ul-list li a');
 const sections = document.querySelectorAll('section');
 
 function removeActive() {
-  navLinks.forEach(link => link.parentElement.classList.remove('active'));
+  navLinks.forEach(link => {
+    if (link.parentElement) {
+      link.parentElement.classList.remove('active');
+    }
+  });
 }
 
 navLinks.forEach(link => {
   link.addEventListener('click', e => {
     e.preventDefault();
-    const targetId = link.getAttribute('href').substring(1);
+
+    const targetId = link.getAttribute('href')?.substring(1);
     const targetSection = document.getElementById(targetId);
 
-    window.scrollTo({
-      top: targetSection.offsetTop - 80,
-      behavior: 'smooth'
-    });
+    if (targetSection) {
+      window.scrollTo({
+        top: targetSection.offsetTop - 80,
+        behavior: 'smooth'
+      });
+    }
 
     removeActive();
-    link.parentElement.classList.add('active');
+    if (link.parentElement) {
+      link.parentElement.classList.add('active');
+    }
   });
 });
 
@@ -49,33 +58,47 @@ backToTop.addEventListener('click', () => {
   window.scrollTo({ top: 0, behavior: 'smooth' });
 });
 
-backToTop.addEventListener('mouseover', () => backToTop.style.transform = 'scale(1.2)');
-backToTop.addEventListener('mouseout', () => backToTop.style.transform = 'scale(1)');
+backToTop.addEventListener('mouseover', () => {
+  backToTop.style.transform = 'scale(1.2)';
+});
+
+backToTop.addEventListener('mouseout', () => {
+  backToTop.style.transform = 'scale(1)';
+});
 
 // === REVEAL ANIMATION ===
-const revealElements = document.querySelectorAll('.home-container, .about-container, .projects-container, .services-container, .contact-content');
+const revealElements = document.querySelectorAll(
+  '.home-container, .about-container, .projects-container, .services-container, .contact-content'
+);
+
 revealElements.forEach(el => el.classList.add('reveal'));
 
 window.addEventListener('scroll', () => {
+
   let scrollPos = window.scrollY + 100;
 
-  // Active nav link on scroll
+  // Active nav link
   sections.forEach(section => {
-    if (scrollPos >= section.offsetTop && scrollPos < section.offsetTop + section.offsetHeight) {
+    if (
+      scrollPos >= section.offsetTop &&
+      scrollPos < section.offsetTop + section.offsetHeight
+    ) {
       removeActive();
       const activeLink = document.querySelector(`.ul-list li a[href="#${section.id}"]`);
-      if (activeLink) activeLink.parentElement.classList.add('active');
+      if (activeLink && activeLink.parentElement) {
+        activeLink.parentElement.classList.add('active');
+      }
     }
   });
 
-  // Show or hide back-to-top
+  // Back to top button
   if (window.scrollY > 500) {
     backToTop.style.display = "flex";
   } else {
     backToTop.style.display = "none";
   }
 
-  // Reveal animation trigger
+  // Reveal animation
   revealElements.forEach(el => {
     const windowHeight = window.innerHeight;
     const elementTop = el.getBoundingClientRect().top;
@@ -89,44 +112,62 @@ window.addEventListener('scroll', () => {
 
 // === CARD HOVER ANIMATION ===
 const cards = document.querySelectorAll('.project-card, .c1, .service-card');
+
 cards.forEach(card => {
-  card.addEventListener('mouseenter', () => card.style.transform = 'translateY(-8px) scale(1.05)');
-  card.addEventListener('mouseleave', () => card.style.transform = 'translateY(0) scale(1)');
+  card.addEventListener('mouseenter', () => {
+    card.style.transform = 'translateY(-8px) scale(1.05)';
+  });
+
+  card.addEventListener('mouseleave', () => {
+    card.style.transform = 'translateY(0) scale(1)';
+  });
 });
 
 // === TYPING ANIMATION ===
 const typingElement = document.querySelector('.info-home h3');
-const words = ["FullStack Developer", "Web Enthusiast", "React Developer"];
-let wordIndex = 0;
-let charIndex = 0;
-let isDeleting = false;
-let typingSpeed = 100;
 
-function type() {
-  const currentWord = words[wordIndex];
-  let displayedText = currentWord.substring(0, charIndex);
+if (typingElement) {
 
-  typingElement.innerHTML = displayedText + '<span class="cursor">|</span>';
+  const words = ["FullStack Developer", "Web Enthusiast", "React Developer"];
+  let wordIndex = 0;
+  let charIndex = 0;
+  let isDeleting = false;
+  let typingSpeed = 100;
 
-  if (!isDeleting && charIndex < currentWord.length) {
-    charIndex++;
-    setTimeout(type, typingSpeed);
-  } else if (isDeleting && charIndex > 0) {
-    charIndex--;
-    setTimeout(type, typingSpeed / 2);
-  } else {
-    isDeleting = !isDeleting;
-    if (!isDeleting) {
-      wordIndex = (wordIndex + 1) % words.length;
+  function type() {
+
+    const currentWord = words[wordIndex];
+    let displayedText = currentWord.substring(0, charIndex);
+
+    typingElement.innerHTML = displayedText + '<span class="cursor">|</span>';
+
+    if (!isDeleting && charIndex < currentWord.length) {
+      charIndex++;
+      setTimeout(type, typingSpeed);
     }
-    setTimeout(type, 1000);
-  }
-}
 
-document.addEventListener('DOMContentLoaded', type);
+    else if (isDeleting && charIndex > 0) {
+      charIndex--;
+      setTimeout(type, typingSpeed / 2);
+    }
+
+    else {
+      isDeleting = !isDeleting;
+
+      if (!isDeleting) {
+        wordIndex = (wordIndex + 1) % words.length;
+      }
+
+      setTimeout(type, 1000);
+    }
+  }
+
+  document.addEventListener('DOMContentLoaded', type);
+}
 
 // === LOADING SCREEN ===
 document.addEventListener("DOMContentLoaded", () => {
+
   const loadingText = document.getElementById("loading-text");
   const mainIcon = document.querySelector(".main-icon");
   const subIcons = document.querySelectorAll(".sub-icons i");
@@ -135,6 +176,8 @@ document.addEventListener("DOMContentLoaded", () => {
   const loadingScreen = document.getElementById("loading-screen");
 
   function showElement(element, delay = 0) {
+    if (!element) return;
+
     setTimeout(() => {
       element.classList.remove("hidden");
       element.classList.add("fall");
@@ -143,38 +186,66 @@ document.addEventListener("DOMContentLoaded", () => {
 
   showElement(loadingText, 0);
   showElement(mainIcon, 800);
-  subIcons.forEach((icon, idx) => showElement(icon, 1600 + idx * 400));
+
+  subIcons.forEach((icon, idx) => {
+    showElement(icon, 1600 + idx * 400);
+  });
+
   showElement(designerText, 2800);
 
   setTimeout(() => {
-    loadingScreen.style.opacity = '0';
-    setTimeout(() => loadingScreen.style.display = 'none', 500);
-    mainPage.classList.add("visible");
+
+    if (loadingScreen) {
+      loadingScreen.style.opacity = "0";
+      setTimeout(() => {
+        loadingScreen.style.display = "none";
+      }, 500);
+    }
+
+    if (mainPage) {
+      mainPage.classList.add("visible");
+    }
+
   }, 4000);
 });
 
+// === FINAL LOAD ANIMATION ===
 window.addEventListener("load", () => {
+
   const elements = document.querySelectorAll(".hidden");
   let delay = 400;
 
   elements.forEach((el, index) => {
-    setTimeout(() => el.classList.add("show"), delay * index);
+    setTimeout(() => {
+      el.classList.add("show");
+    }, delay * index);
   });
 
-  setTimeout(() => {
-    document.getElementById("loading-screen").style.opacity = "0";
+  const loading = document.getElementById("loading-screen");
+
+  if (loading) {
     setTimeout(() => {
-      document.getElementById("loading-screen").style.display = "none";
-    }, 800);
-  }, delay * elements.length + 1000);
+      loading.style.opacity = "0";
+
+      setTimeout(() => {
+        loading.style.display = "none";
+      }, 800);
+
+    }, delay * elements.length + 1000);
+  }
 });
-// Optional: Change animation speed dynamically or log when hovered
+
+// === LOGO SLIDER SPEED CONTROL ===
 const logoTrack = document.querySelector('.logo-track');
 
-logoTrack.addEventListener('mouseover', () => {
-  logoTrack.style.animationDuration = '20s'; // slow down on hover
-});
+if (logoTrack) {
 
-logoTrack.addEventListener('mouseout', () => {
-  logoTrack.style.animationDuration = '14s'; // back to normal
-});
+  logoTrack.addEventListener('mouseover', () => {
+    logoTrack.style.animationDuration = '20s';
+  });
+
+  logoTrack.addEventListener('mouseout', () => {
+    logoTrack.style.animationDuration = '14s';
+  });
+
+}
